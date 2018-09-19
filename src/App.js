@@ -4,7 +4,9 @@ import './App.css';
 import Delete from './Components/Delete';
 import Header from './Components/Header';
 import logo from './ketoLogo.png';
-// import MealPlan from './Components/MealPlan';
+import Search from './Components/Search';
+import image from './addRecipeImg.png';
+import Edit from './Components/Edit';
 
 
 const baseUrl = '/api/recipes';
@@ -51,6 +53,16 @@ class App extends Component {
   })
   }
 
+  editRecipe(id){
+
+  }
+
+  getUpdatedRecipes = (updated) => {
+    this.setState({
+      recipes: updated
+    })
+
+  }
    
 
   render() {
@@ -63,24 +75,34 @@ class App extends Component {
               <div className="label-containerFlex">
                   <div id="name">{r.name}</div>
                       
-
-                      <Delete className="icon" id={r.id}
+                      <Edit id={r.id} 
+                      name={r.name}
+                      url={r.url}
+                      image={r.image}
+                      getUpdatedRecipes={this.getUpdatedRecipes}
+                      />
+                      <Delete id={r.id}
                         action={() => this.deleteRecipe(r.id)}
                       />
               </div>
             </div>
     })
     return (
-        <div>
-         <div className="header">
-            <Header/>
+      <div className="App">
+         <div className="header-flex">
+            <div className="logo"><Header/></div>
          </div>
           
-        <div className="body-container">
-           <div className="body-flex">
-                <div className="side-panel">SIDE
-                    <div id="top">ADD-RECIPE
-                      <div className="form-wrap">
+       <div className="body-container">
+           <div className="body">
+           <div className ="grid-container">
+                        {recipes}
+               </div>
+                <div className="side">
+                     <br/>
+                      <p><img className="addLogo" src={image}/></p>
+                   <div className ="forms">
+                      
                                 <input
                                   className="input"
                                   placeholder="name"
@@ -88,6 +110,8 @@ class App extends Component {
                                     this.name = name;
                                   }}
                                 />
+
+                               
                                 <input
                                   className="input"
                                   placeholder="url"
@@ -95,6 +119,8 @@ class App extends Component {
                                     this.url = url;
                                   }}
                                 />
+                            
+                            
                                 <input
                                   className="input"
                                   placeholder="image"
@@ -102,20 +128,17 @@ class App extends Component {
                                     this.image = image;
                                   }}
                                 />
-                                <button className="button" onClick={this.addRecipe}>
-                                    Add Recipe
-                                  </button>
                                 
-                              </div>
-                    </div>
-                <div className="gallery-panel">
-                <div className ="grid-container">
-                  {recipes}
+                                <button className="button" onClick={this.addRecipe}>
+                                    add 
+                                  </button>
+
+                                  <div className="search"><Search getUpdatedRecipes={this.getUpdatedRecipes} addRecipeFn={this.addRecipe}/></div>
+                               </div>
+                    
+                  </div>
                 </div>
-                </div>
-           </div>
           </div> 
-        </div>
       </div>
       )
 
