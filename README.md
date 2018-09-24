@@ -1,7 +1,7 @@
-#KETOLLECTION
+# KETOLLECTION
 
-## Personal collection of Ketogenic Diet Recipes which also has a Searching
-## capability using a 3rd party API.
+ >Personal collection of Ketogenic Diet Recipes which also has a Searching
+ >capability using a 3rd party API.
 
 
 ![ezgif com-video-to-gif 4](https://user-images.githubusercontent.com/29646098/45980949-4550e180-c008-11e8-96ac-ac287c7d328b.gif)
